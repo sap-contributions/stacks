@@ -55,7 +55,7 @@ func testPublish(cliPath string) func(*testing.T, spec.G, spec.S) {
 			}
 		})
 
-		it("builds and publishes full bionic-stack", func() {
+		it("builds and publishes full focal-stack", func() {
 			stacksDir, err := getStacksDirectory()
 			Expect(err).NotTo(HaveOccurred())
 

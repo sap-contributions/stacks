@@ -71,7 +71,7 @@ func testCreator(t *testing.T, when spec.G, it spec.S) {
 		Expect(os.RemoveAll(dir)).To(Succeed())
 	})
 
-	it("create the bionic stack", func() {
+	it("create the focal stack", func() {
 		fakeMixinsGenerator.GetMixinsCall.Returns.BuildMixins = []string{"test1", "test2", "build:test3"}
 		fakeMixinsGenerator.GetMixinsCall.Returns.RunMixins = []string{"test1", "test2", "run:test4"}
 		fakeBOMGenerator.GenerateCall.Returns.OutputPaths = []string{bomPath}
@@ -100,7 +100,7 @@ func testCreator(t *testing.T, when spec.G, it spec.S) {
 		})
 		Expect(err).NotTo(HaveOccurred())
 
-		Expect(fakeImageClient.PullCall.Receives.Tag).To(Equal("ubuntu:bionic"))
+		Expect(fakeImageClient.PullCall.Receives.Tag).To(Equal("ubuntu:focal"))
 		Expect(fakeImageClient.PullCall.Receives.Keychain).To(Equal(authn.DefaultKeychain))
 
 		Expect(fakeImageClient.BuildCall.CallCount).To(Equal(4))
@@ -137,7 +137,7 @@ func testCreator(t *testing.T, when spec.G, it spec.S) {
 		Expect(fakeBOMGenerator.AttachCall.Receives.Files).To(Equal([]string{bomPath}))
 	})
 
-	it("create the bionic stack and publish", func() {
+	it("create the focal stack and publish", func() {
 		fakeImageClient.PushCall.Stub = func(tag string) (string, error) {
 			refs := []string{
 				"test-build-base-tag@sha256:124124214hjshfskahfkjh12312",
@@ -182,7 +182,7 @@ func testCreator(t *testing.T, when spec.G, it spec.S) {
 		})
 		Expect(err).NotTo(HaveOccurred())
 
-		Expect(fakeImageClient.PullCall.Receives.Tag).To(Equal("ubuntu:bionic"))
+		Expect(fakeImageClient.PullCall.Receives.Tag).To(Equal("ubuntu:focal"))
 		Expect(fakeImageClient.PullCall.Receives.Keychain).To(Equal(authn.DefaultKeychain))
 
 		Expect(fakeImageClient.BuildCall.CallCount).To(Equal(4))

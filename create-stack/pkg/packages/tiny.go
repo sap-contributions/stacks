@@ -12,7 +12,7 @@ import (
 )
 
 type Tiny struct {
-	BuildPkgs Bionic
+	BuildPkgs Focal
 }
 
 func (t Tiny) GetBuildPackagesList(imageName string) ([]string, error) {

@@ -57,7 +57,7 @@ func testFull(cliPath string) func(*testing.T, spec.G, spec.S) {
 			}
 		})
 
-		it("builds full bionic-stack", func() {
+		it("builds full focal-stack", func() {
 			stacksDir, err := getStacksDirectory()
 			Expect(err).NotTo(HaveOccurred())
 
@@ -84,9 +84,9 @@ func testFull(cliPath string) func(*testing.T, spec.G, spec.S) {
 			err = json.Unmarshal(output, &buildImageConfig)
 			Expect(err).NotTo(HaveOccurred())
 
-			assertCommonLabels(t, BionicStackID, buildImageConfig)
+			assertCommonLabels(t, FocalStackID, buildImageConfig)
 
-			Expect(buildImageConfig.StackLabels.Description).To(Equal("ubuntu:bionic + many common C libraries and utilities"))
+			Expect(buildImageConfig.StackLabels.Description).To(Equal("ubuntu:focal + many common C libraries and utilities"))
 			Expect(buildImageConfig.StackLabels.Metadata).To(MatchJSON("{}"))
 			Expect(buildImageConfig.StackLabels.Mixins).To(ContainSubstring(`"build:cmake"`))
 			Expect(buildImageConfig.StackLabels.Mixins).To(ContainSubstring(`"ca-certificates"`))
@@ -112,10 +112,10 @@ func testFull(cliPath string) func(*testing.T, spec.G, spec.S) {
 
 			runImageConfig = runImageMetadata.ImageConfig
 
-			assertCommonLabels(t, BionicStackID, runImageConfig)
+			assertCommonLabels(t, FocalStackID, runImageConfig)
 			assertSBOMAttached(t, settings.Run.CNBRef, runImageConfig.StackLabels)
 
-			Expect(runImageConfig.StackLabels.Description).To(Equal("ubuntu:bionic + many common C libraries and utilities"))
+			Expect(runImageConfig.StackLabels.Description).To(Equal("ubuntu:focal + many common C libraries and utilities"))
 			Expect(runImageConfig.StackLabels.Metadata).To(MatchJSON("{}"))
 			Expect(runImageConfig.StackLabels.Mixins).To(ContainSubstring(`"ca-certificates"`))
 			Expect(runImageConfig.StackLabels.Mixins).NotTo(ContainSubstring("build:"))

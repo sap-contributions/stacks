@@ -56,7 +56,7 @@ func testBase(cliPath string) func(*testing.T, spec.G, spec.S) {
 			}
 		})
 
-		it("builds base bionic-stack", func() {
+		it("builds base focal-stack", func() {
 			stacksDir, err := getStacksDirectory()
 			Expect(err).NotTo(HaveOccurred())
 
@@ -82,9 +82,9 @@ func testBase(cliPath string) func(*testing.T, spec.G, spec.S) {
 			err = json.Unmarshal(output, &buildImageConfig)
 			Expect(err).NotTo(HaveOccurred())
 
-			assertCommonLabels(t, BionicStackID, buildImageConfig)
+			assertCommonLabels(t, FocalStackID, buildImageConfig)
 
-			Expect(buildImageConfig.StackLabels.Description).To(Equal("ubuntu:bionic + openssl + CA certs + compilers + shell utilities"))
+			Expect(buildImageConfig.StackLabels.Description).To(Equal("ubuntu:focal + openssl + CA certs + compilers + shell utilities"))
 			Expect(buildImageConfig.StackLabels.Mixins).To(ContainSubstring(`"build:make"`))
 			Expect(buildImageConfig.StackLabels.Mixins).To(ContainSubstring(`"ca-certificates"`))
 			Expect(buildImageConfig.StackLabels.Mixins).NotTo(ContainSubstring("run:"))
@@ -109,9 +109,9 @@ func testBase(cliPath string) func(*testing.T, spec.G, spec.S) {
 
 			runImageConfig = runImageMetadata.ImageConfig
 
-			assertCommonLabels(t, BionicStackID, runImageConfig)
+			assertCommonLabels(t, FocalStackID, runImageConfig)
 
-			Expect(runImageConfig.StackLabels.Description).To(Equal("ubuntu:bionic + openssl + CA certs"))
+			Expect(runImageConfig.StackLabels.Description).To(Equal("ubuntu:focal + openssl + CA certs"))
 			Expect(runImageConfig.StackLabels.Mixins).To(ContainSubstring(`"ca-certificates"`))
 			Expect(runImageConfig.StackLabels.Mixins).NotTo(ContainSubstring("build:"))
 			Expect(runImageConfig.StackLabels.Packages).To(ContainSubstring(`"ca-certificates"`))

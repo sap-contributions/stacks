@@ -29,7 +29,7 @@ func NewFullStack(buildTag, runTag, stackDir string, publish bool) (Definition, 
 			UseBuildKit: useBuildKit,
 			Publish:     publish,
 			Tag:         buildTag,
-			Dockerfile:  fmt.Sprintf("%s/bionic/dockerfile/build", stackDir),
+			Dockerfile:  fmt.Sprintf("%s/focal/dockerfile/build", stackDir),
 			Args: []string{
 				fmt.Sprintf("sources=%s", sources),
 				fmt.Sprintf("packages=%s", buildPackages),
@@ -38,14 +38,14 @@ func NewFullStack(buildTag, runTag, stackDir string, publish bool) (Definition, 
 		BuildCNB: Image{
 			Publish:     publish,
 			Tag:         fmt.Sprintf("%s-cnb", buildTag),
-			Dockerfile:  fmt.Sprintf("%s/bionic/cnb/build", stackDir),
-			Description: "ubuntu:bionic + many common C libraries and utilities",
+			Dockerfile:  fmt.Sprintf("%s/focal/cnb/build", stackDir),
+			Description: "ubuntu:focal + many common C libraries and utilities",
 		},
 		RunBase: Image{
 			UseBuildKit: useBuildKit,
 			Publish:     publish,
 			Tag:         runTag,
-			Dockerfile:  fmt.Sprintf("%s/bionic/dockerfile/run", stackDir),
+			Dockerfile:  fmt.Sprintf("%s/focal/dockerfile/run", stackDir),
 			Args: []string{
 				fmt.Sprintf("sources=%s", sources),
 				fmt.Sprintf("packages=%s", runPackages),
@@ -54,8 +54,8 @@ func NewFullStack(buildTag, runTag, stackDir string, publish bool) (Definition, 
 		RunCNB: Image{
 			Publish:     publish,
 			Tag:         fmt.Sprintf("%s-cnb", runTag),
-			Dockerfile:  fmt.Sprintf("%s/bionic/cnb/run", stackDir),
-			Description: "ubuntu:bionic + many common C libraries and utilities",
+			Dockerfile:  fmt.Sprintf("%s/focal/cnb/run", stackDir),
+			Description: "ubuntu:focal + many common C libraries and utilities",
 		},
 	}, nil
 }

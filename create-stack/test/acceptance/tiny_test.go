@@ -95,7 +95,7 @@ func testTiny(cliPath string) func(*testing.T, spec.G, spec.S) {
 
 			assertCommonLabels(t, TinyStackID, buildImageConfig)
 
-			Expect(buildImageConfig.StackLabels.Description).To(Equal("ubuntu:bionic + openssl + CA certs + compilers + shell utilities"))
+			Expect(buildImageConfig.StackLabels.Description).To(Equal("ubuntu:focal + openssl + CA certs + compilers + shell utilities"))
 			Expect(buildImageConfig.StackLabels.Metadata).To(MatchJSON("{}"))
 			Expect(buildImageConfig.StackLabels.Mixins).To(ContainSubstring(`"build:make"`))
 			Expect(buildImageConfig.StackLabels.Mixins).To(ContainSubstring(`"ca-certificates"`))
@@ -124,7 +124,7 @@ func testTiny(cliPath string) func(*testing.T, spec.G, spec.S) {
 			assertCommonLabels(t, TinyStackID, runImageConfig)
 			assertSBOMAttached(t, settings.Run.CNBRef, runImageConfig.StackLabels)
 
-			Expect(runImageConfig.StackLabels.Description).To(Equal("distroless-like bionic + glibc + openssl + CA certs"))
+			Expect(runImageConfig.StackLabels.Description).To(Equal("distroless-like focal + glibc + openssl + CA certs"))
 			Expect(runImageConfig.StackLabels.Metadata).To(MatchJSON("{}"))
 			Expect(runImageConfig.StackLabels.Mixins).To(ContainSubstring(`"ca-certificates"`))
 			Expect(runImageConfig.StackLabels.Mixins).NotTo(ContainSubstring("build:"))
