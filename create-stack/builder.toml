@@ -10,6 +10,6 @@ id = "paketo-buildpacks/go"
 version = "0.1.0"
 
 [stack]
-id = "focal"
-build-image = "europe-west3-docker.pkg.dev/sap-se-gcp-istio-dev/focal/build-image:0.0.1-base"
-run-image = "europe-west3-docker.pkg.dev/sap-se-gcp-istio-dev/focal/run-image:0.0.1-base"
+id = "io.buildpacks.stacks.bionic"
+build-image = "europe-west3-docker.pkg.dev/sap-se-gcp-istio-dev/focal/build-image:0.0.1-base-cnb"
+run-image = "europe-west3-docker.pkg.dev/sap-se-gcp-istio-dev/focal/run-image:0.0.1-base-cnb"

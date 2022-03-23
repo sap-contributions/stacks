@@ -57,7 +57,7 @@ const (
 	DistroName    = "Ubuntu"
 	DistroVersion = "18.04"
 	Homepage      = "https://github.com/paketo-buildpacks/stacks"
-	FocalStackID  = "io.buildpacks.stacks.focal"
+	FocalStackID  = "io.buildpacks.stacks.bionic"
 	TinyStackID   = "io.paketo.stacks.tiny"
 	Maintainer    = "Paketo Buildpacks"
 )

@@ -1,4 +1,4 @@
-FROM ubuntu:bionic AS builder
+FROM ubuntu:focal AS builder
 
 ARG PACKAGE_LIST=packagelist
 
