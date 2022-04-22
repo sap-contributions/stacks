@@ -9,7 +9,7 @@ import (
 
 func TestPackages(t *testing.T) {
 	suite := spec.New("packages", spec.Report(report.Terminal{}))
-	suite("Bionic", testBionic)
+	suite("Jammy", testJammy)
 	suite("Tiny", testTiny)
 	suite.Run(t)
 }

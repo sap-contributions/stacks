@@ -12,7 +12,7 @@ import (
 )
 
 type Tiny struct {
-	BuildPkgs Bionic
+	BuildPkgs Jammy
 }
 
 func (t Tiny) GetBuildPackagesList(imageName string) ([]string, error) {

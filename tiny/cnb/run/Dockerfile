@@ -1,6 +1,6 @@
 ARG base_image
 FROM ${base_image} AS tiny-source
-FROM ubuntu:bionic AS builder
+FROM ubuntu:jammy AS builder
 COPY --from=tiny-source / /tiny/
 
 ARG cnb_uid=1000
@@ -15,7 +15,7 @@ FROM ${base_image}
 COPY --from=builder /tiny/ /
 ARG cnb_uid=1000
 ARG cnb_gid=1000
-ARG description="Distroless-like bionic + glibc + openssl + CA certs"
+ARG description="Distroless-like jammy + glibc + openssl + CA certs"
 ARG distro_name="Ubuntu"
 ARG distro_version="18.04"
 ARG homepage="https://github.com/paketo-buildpacks/stacks"

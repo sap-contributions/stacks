@@ -114,9 +114,9 @@ func (c Creator) CreateStack(stackable Stack, buildBaseTag, runBaseTag string, p
 }
 
 func (c Creator) Execute(def Definition) error {
-	_, err := c.ImageClient.Pull("ubuntu:bionic", authn.DefaultKeychain)
+	_, err := c.ImageClient.Pull("ubuntu:jammy", authn.DefaultKeychain)
 	if err != nil {
-		return fmt.Errorf("error pulling bionic image: %w", err)
+		return fmt.Errorf("error pulling jammy image: %w", err)
 	}
 
 	buildBaseRef, err := c.buildBaseImage(def.BuildBase)

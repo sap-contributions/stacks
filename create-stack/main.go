@@ -34,21 +34,21 @@ func main() {
 
 	switch opts.StackName {
 	case "full":
-		packageFinder = packages.Bionic{}
+		packageFinder = packages.Jammy{}
 		definition, err = stackPkg.NewFullStack(buildBaseTag, runBaseTag, opts.StacksDir, opts.Publish)
 		if err != nil {
 			log.Fatal(err)
 		}
 
 	case "base":
-		packageFinder = packages.Bionic{}
+		packageFinder = packages.Jammy{}
 		definition, err = stackPkg.NewBaseStack(buildBaseTag, runBaseTag, opts.StacksDir, opts.Publish)
 		if err != nil {
 			log.Fatal(err)
 		}
 
 	case "tiny":
-		packageFinder = packages.Tiny{BuildPkgs: packages.Bionic{}}
+		packageFinder = packages.Tiny{BuildPkgs: packages.Jammy{}}
 		definition, err = stackPkg.NewTinyStack(buildBaseTag, runBaseTag, opts.StacksDir, opts.Publish)
 		if err != nil {
 			log.Fatal(err)

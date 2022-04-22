@@ -24,7 +24,7 @@ func NewTinyStack(buildTag, runTag, stackDir string, publish bool) (Definition, 
 			UseBuildKit: useBuildKit,
 			Publish:     publish,
 			Tag:         buildTag,
-			Dockerfile:  fmt.Sprintf("%s/bionic/dockerfile/build", stackDir),
+			Dockerfile:  fmt.Sprintf("%s/jammy/dockerfile/build", stackDir),
 			Args: []string{
 				fmt.Sprintf("sources=%s", sources),
 				fmt.Sprintf("packages=%s", buildPackages),
@@ -33,8 +33,8 @@ func NewTinyStack(buildTag, runTag, stackDir string, publish bool) (Definition, 
 		BuildCNB: Image{
 			Publish:     publish,
 			Tag:         fmt.Sprintf("%s-cnb", buildTag),
-			Dockerfile:  fmt.Sprintf("%s/bionic/cnb/build", stackDir),
-			Description: "ubuntu:bionic + openssl + CA certs + compilers + shell utilities",
+			Dockerfile:  fmt.Sprintf("%s/jammy/cnb/build", stackDir),
+			Description: "ubuntu:jammy + openssl + CA certs + compilers + shell utilities",
 			Args: []string{
 				"stack_id=io.paketo.stacks.tiny",
 			},
@@ -49,7 +49,7 @@ func NewTinyStack(buildTag, runTag, stackDir string, publish bool) (Definition, 
 			Publish:     publish,
 			Tag:         fmt.Sprintf("%s-cnb", runTag),
 			Dockerfile:  fmt.Sprintf("%s/tiny/cnb/run", stackDir),
-			Description: "distroless-like bionic + glibc + openssl + CA certs",
+			Description: "distroless-like jammy + glibc + openssl + CA certs",
 		},
 	}, nil
 }

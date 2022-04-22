@@ -31,7 +31,7 @@ func NewBaseStack(buildTag, runTag, stackDir string, publish bool) (Definition, 
 			UseBuildKit: useBuildKit,
 			Publish:     publish,
 			Tag:         buildTag,
-			Dockerfile:  fmt.Sprintf("%s/bionic/dockerfile/build", stackDir),
+			Dockerfile:  fmt.Sprintf("%s/jammy/dockerfile/build", stackDir),
 			Args: []string{
 				fmt.Sprintf("sources=%s", sources),
 				fmt.Sprintf("packages=%s", buildPackages),
@@ -40,14 +40,14 @@ func NewBaseStack(buildTag, runTag, stackDir string, publish bool) (Definition, 
 		BuildCNB: Image{
 			Publish:     publish,
 			Tag:         fmt.Sprintf("%s-cnb", buildTag),
-			Dockerfile:  fmt.Sprintf("%s/bionic/cnb/build", stackDir),
-			Description: "ubuntu:bionic + openssl + CA certs + compilers + shell utilities",
+			Dockerfile:  fmt.Sprintf("%s/jammy/cnb/build", stackDir),
+			Description: "ubuntu:jammy + openssl + CA certs + compilers + shell utilities",
 		},
 		RunBase: Image{
 			UseBuildKit: useBuildKit,
 			Publish:     publish,
 			Tag:         runTag,
-			Dockerfile:  fmt.Sprintf("%s/bionic/dockerfile/run", stackDir),
+			Dockerfile:  fmt.Sprintf("%s/jammy/dockerfile/run", stackDir),
 			Args: []string{
 				fmt.Sprintf("sources=%s", sources),
 				fmt.Sprintf("packages=%s", runPackages),
@@ -56,8 +56,8 @@ func NewBaseStack(buildTag, runTag, stackDir string, publish bool) (Definition, 
 		RunCNB: Image{
 			Publish:     publish,
 			Tag:         fmt.Sprintf("%s-cnb", runTag),
-			Dockerfile:  fmt.Sprintf("%s/bionic/cnb/run", stackDir),
-			Description: "ubuntu:bionic + openssl + CA certs",
+			Dockerfile:  fmt.Sprintf("%s/jammy/cnb/run", stackDir),
+			Description: "ubuntu:jammy + openssl + CA certs",
 		},
 	}, nil
 }

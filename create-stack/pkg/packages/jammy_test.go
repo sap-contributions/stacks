@@ -11,13 +11,13 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-func testBionic(t *testing.T, when spec.G, it spec.S) {
+func testJammy(t *testing.T, when spec.G, it spec.S) {
 	var (
 		Expect = NewWithT(t).Expect
 
 		buildImageTag = "paketobuildpacks/build:1.0.22-base-cnb"
 		runImageTag   = "paketobuildpacks/run:1.0.22-base-cnb"
-		bionic        packages.Bionic
+		jammy        packages.Jammy
 	)
 
 	it.Before(func() {
@@ -31,7 +31,7 @@ func testBionic(t *testing.T, when spec.G, it spec.S) {
 	})
 
 	it("can get the list of packages", func() {
-		buildPackages, err := bionic.GetBuildPackagesList(buildImageTag)
+		buildPackages, err := jammy.GetBuildPackagesList(buildImageTag)
 		Expect(err).NotTo(HaveOccurred())
 		Expect(buildPackages).To(Equal([]string{
 			"adduser",
@@ -207,7 +207,7 @@ func testBionic(t *testing.T, when spec.G, it spec.S) {
 			"zlib1g-dev",
 		}))
 
-		runPackages, err := bionic.GetRunPackagesList(runImageTag)
+		runPackages, err := jammy.GetRunPackagesList(runImageTag)
 		Expect(err).NotTo(HaveOccurred())
 		Expect(runPackages).To(Equal([]string{
 			"adduser",
@@ -309,7 +309,7 @@ func testBionic(t *testing.T, when spec.G, it spec.S) {
 	})
 
 	it("can get the package metadata", func() {
-		buildPackageMetadata, err := bionic.GetBuildPackageMetadata(buildImageTag)
+		buildPackageMetadata, err := jammy.GetBuildPackageMetadata(buildImageTag)
 		Expect(err).NotTo(HaveOccurred())
 		Expect(buildPackageMetadata).To(MatchJSON(`[
 			{
@@ -2195,7 +2195,7 @@ func testBionic(t *testing.T, when spec.G, it spec.S) {
 			}
 		]`))
 
-		runPackageMetadata, err := bionic.GetRunPackageMetadata(runImageTag)
+		runPackageMetadata, err := jammy.GetRunPackageMetadata(runImageTag)
 		Expect(err).NotTo(HaveOccurred())
 		Expect(runPackageMetadata).To(MatchJSON(`[
 			{

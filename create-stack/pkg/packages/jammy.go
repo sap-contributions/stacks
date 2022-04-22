@@ -21,17 +21,17 @@ type SourcePackage struct {
 	UpstreamVersion string `json:"upstreamVersion"`
 }
 
-type Bionic struct{}
+type Jammy struct{}
 
-func (t Bionic) GetBuildPackagesList(imageName string) ([]string, error) {
+func (t Jammy) GetBuildPackagesList(imageName string) ([]string, error) {
 	return t.getPackagesList(imageName)
 }
 
-func (t Bionic) GetRunPackagesList(imageName string) ([]string, error) {
+func (t Jammy) GetRunPackagesList(imageName string) ([]string, error) {
 	return t.getPackagesList(imageName)
 }
 
-func (t Bionic) getPackagesList(imageName string) ([]string, error) {
+func (t Jammy) getPackagesList(imageName string) ([]string, error) {
 	output, err := exec.Command("docker", "run", "--rm", imageName, "dpkg-query", "-f",
 		"${Package}\\n", "-W",
 	).CombinedOutput()
@@ -42,15 +42,15 @@ func (t Bionic) getPackagesList(imageName string) ([]string, error) {
 	return strings.Split(strings.TrimSpace(string(output)), "\n"), nil
 }
 
-func (t Bionic) GetBuildPackageMetadata(imageName string) (string, error) {
+func (t Jammy) GetBuildPackageMetadata(imageName string) (string, error) {
 	return t.getPackageMetadata(imageName)
 }
 
-func (t Bionic) GetRunPackageMetadata(imageName string) (string, error) {
+func (t Jammy) GetRunPackageMetadata(imageName string) (string, error) {
 	return t.getPackageMetadata(imageName)
 }
 
-func (t Bionic) getPackageMetadata(imageName string) (string, error) {
+func (t Jammy) getPackageMetadata(imageName string) (string, error) {
 	output, err := exec.Command("docker", "run", "--rm", imageName, "dpkg-query", "-W", "-f",
 		"${binary:Package};${Version};${Architecture};${binary:Summary};${source:Package};${source:Version};${source:Upstream-Version}\\n",
 	).CombinedOutput()

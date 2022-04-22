@@ -30,23 +30,23 @@ Run Images
 ## Use Cases
 
 
-### Base (aka "bionic")
+### Base (aka "jammy")
 Ideal for:
 - .NET Core apps
 - Java apps and Go apps that require some C libraries
 - Node.js/Python/Ruby/etc. apps **without** many native extensions
 
 Contains:
-- Build: ubuntu:bionic + openssl + CA certs + compilers + shell utilities
-- Run: ubuntu:bionic + openssl + CA certs
+- Build: ubuntu:jammy + openssl + CA certs + compilers + shell utilities
+- Run: ubuntu:jammy + openssl + CA certs
 
 ### Full
 Ideal for:
 - PHP/Node.js/Python/Ruby/etc. apps **with** many native extensions
 
 Contains:
-- Build: ubuntu:bionic + many common C libraries and utilities
-- Run: ubuntu:bionic + many common libraries and utilities
+- Build: ubuntu:jammy + many common C libraries and utilities
+- Run: ubuntu:jammy + many common libraries and utilities
 
 ### Tiny
 Ideal for:
@@ -54,5 +54,5 @@ Ideal for:
 - Java apps and Java [GraalVM Native Images](https://www.graalvm.org/docs/reference-manual/native-image/)
 
 Contains:
-- Build: ubuntu:bionic + openssl + CA certs + compilers + shell utilities
-- Run: distroless-like bionic + glibc + openssl + CA certs
+- Build: ubuntu:jammy + openssl + CA certs + compilers + shell utilities
+- Run: distroless-like jammy + glibc + openssl + CA certs

@@ -52,7 +52,7 @@ ENTRYPOINT ["/test"]
 ## Notes & Known Issues
 
 ### Golang Compilation
-Please use the `golang:stretch` image to compile golang binaries. There are known incompatibilities between the `glibc` libraries in `golang:latest` compared to `Tiny` because `golang:latest` is a reference to the `golang:buster` image and `buster` deviates from ubuntu `bionic`, on which `Tiny` is based.
+Please use the `golang:stretch` image to compile golang binaries. There are known incompatibilities between the `glibc` libraries in `golang:latest` compared to `Tiny` because `golang:latest` is a reference to the `golang:buster` image and `buster` deviates from ubuntu `jammy`, on which `Tiny` is based.
 
 ## Building
 

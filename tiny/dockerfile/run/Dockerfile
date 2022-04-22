@@ -1,4 +1,4 @@
-FROM ubuntu:bionic AS builder
+FROM ubuntu:jammy AS builder
 
 ARG PACKAGE_LIST=packagelist
 

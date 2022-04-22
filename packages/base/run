@@ -1,5 +1,5 @@
 ca-certificates
-libssl1.1
+libssl3
 libyaml-0-2
 netbase
 openssl
